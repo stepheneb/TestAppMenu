@@ -1,4 +1,5 @@
-﻿using AppKit;
+﻿using System;
+using AppKit;
 using Foundation;
 
 namespace TestAppMenu.MacOS
@@ -26,6 +27,24 @@ namespace TestAppMenu.MacOS
 
         public override void DidFinishLaunching(NSNotification notification)
         {
+            // top bar app menu
+            NSMenu menubar = new NSMenu();
+            NSMenuItem appMenuItem = new NSMenuItem();
+            menubar.AddItem(appMenuItem);
+
+            NSMenu appMenu = new NSMenu();
+
+            // add quit menu item
+            string quitTitle = String.Format("Quit {0}", "appname");
+            var quitMenuItem = new NSMenuItem(quitTitle, "q", delegate
+            {
+                NSApplication.SharedApplication.Terminate(menubar);
+            });
+            appMenu.AddItem(quitMenuItem);
+
+            // finally add menu
+            NSApplication.SharedApplication.MainMenu = menubar;
+
             Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
