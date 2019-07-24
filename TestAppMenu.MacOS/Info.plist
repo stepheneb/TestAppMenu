@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>Test</string>
+	<string>TestAppMenu</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.deanbrook.Test</string>
 	<key>CFBundleShortVersionString</key>
